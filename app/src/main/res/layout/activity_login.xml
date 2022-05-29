@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/app_logo"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:src="@drawable/chat_group"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"/>
+
+    <EditText
+        android:id="@+id/edt_email"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/app_logo"
+        android:layout_marginTop="10dp"
+        android:hint="이메일"
+        android:background="@drawable/edit_background"
+        android:paddingLeft="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
+    <EditText
+        android:id="@+id/edt_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/edt_email"
+        android:layout_marginTop="10dp"
+        android:hint="비밀번호"
+        android:background="@drawable/edit_background"
+        android:paddingLeft="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edt_pwd"
+        android:text="로그인"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_background"/>
+    <Button
+        android:id="@+id/signUpBtn"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginBtn"
+        android:text="회원가입"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_background"/>
+
+</RelativeLayout>
