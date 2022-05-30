@@ -1,9 +1,9 @@
 # chatting app
 
 ## 개요
-2020.05.30 ~  
+2022.05.30 ~  
 1대 1 채팅 앱
-- client: Android  
+- Client: Android  
 - Server: Firebase
 
 
