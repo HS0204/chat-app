@@ -7,7 +7,7 @@
     tools:context=".ChatActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/charRecyclerView"
+        android:id="@+id/chatRecyclerView"
         android:layout_above="@id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
