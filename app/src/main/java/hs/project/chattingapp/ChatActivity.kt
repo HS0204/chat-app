@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 class ChatActivity : AppCompatActivity() {
 
@@ -45,6 +45,29 @@ class ChatActivity : AppCompatActivity() {
         // 어댑터가 뷰에 메시지 전달
         messageList = ArrayList()
         messageAdapter = MessageAdapter(this, messageList)
+        chatRecyclerView.layoutManager = LinearLayoutManager(this)
+        chatRecyclerView.adapter = messageAdapter
+
+        // recyclerView에 data 추가 로직
+        mDbRef.child("chats").child(senderRoom!!).child("message")
+            .addValueEventListener(object: ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    messageList.clear()
+
+                    for(postSnapshot in snapshot.children){
+                        val message = postSnapshot.getValue(Message::class.java)
+                        messageList.add(message!!)
+                    }
+
+                    messageAdapter.notifyDataSetChanged()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+
+            })
 
         // DB로 메시지 전송
         sendButton.setOnClickListener {
@@ -55,7 +78,8 @@ class ChatActivity : AppCompatActivity() {
                 .setValue(messageObject).addOnSuccessListener {
                     mDbRef.child("chats").child(receiverRoom!!).child("message").push()
                         .setValue(messageObject)
-            }
+                }
+            messageBox.setText("") // editView clear
         }
 
     }
